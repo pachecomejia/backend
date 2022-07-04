@@ -50,9 +50,7 @@ class Usuarios(BaseModel):
     level: int
 security = HTTPBasic()
 origins = [
-    "https://8000-pachecomejia-backend-0lv4cfaix24.ws-us47.gitpod.io",
-    "https://8080-pachecomejia-backend-0lv4cfaix24.ws-us47.gitpod.io",
-    
+"https://8080-pachecomejia-backend-0lv4cfaix24.ws-us47.gitpod.io",    
 ]
 
 app.add_middleware(
@@ -84,12 +82,12 @@ def index(credentials: HTTPBasicCredentials = Depends(security)):
                 detail="Incorrect username or password",
                 headers={"WWW-Authenticate": "Basic"},
             )
-    return user[0]
-    return admin[1]#return credentials.username
+    return user[0]#return credentials.username
 
 @app.get("/", response_model=response)#url donde se puede buscar 
 async def index(username: str = Depends(index)):
     return {"message": "Fast API"}#mensaje de correcta ejecucion 
+    
 @app.get("/clientes/")
 async def clientes(offset:int =0,limit: int = 10,level: int = Depends(index)):
     data = {limit,offset}
@@ -100,7 +98,7 @@ async def clientes(offset:int =0,limit: int = 10,level: int = Depends(index)):
 #################################################################################################################
 #regresa a todos los usuarios agregados a la base de datos 
 @app.get("/user/", response_model=List[Cliente])
-async def get_clientes():
+async def get_clientes(level: int = Depends(index)):
     with sqlite3.connect('clientes.sqlite') as connection:
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()

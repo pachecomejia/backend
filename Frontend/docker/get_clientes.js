@@ -1,6 +1,6 @@
 function get_clientes(){
     var query = window.location.search.substring(1);
-
+    
 
     console.log("Query: " + query)
     //conectar el bakent
@@ -9,6 +9,9 @@ function get_clientes(){
 
     request.open("GET","https://8000-pachecomejia-backend-0lv4cfaix24.ws-us47.gitpod.io/user/",true);
     request.setRequestHeader("Accept","application/json");
+    
+    request.setRequestHeader("Authorization","Basic " +btoa("user" + ":" + "user"));
+    request.setRequestHeader("Content-Type", "application/json");
 
     const  tabla   = document.getElementById("tabla_clientes");
     const  thead   = document.getElementById("thead_clientes");
