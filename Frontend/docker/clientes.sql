@@ -1,6 +1,6 @@
 Drop table if exists clientes;
 Create table clientes(
-    id_cliente       integer primary key autoincrement,
+     id_cliente       integer primary key autoincrement,
 
     nombre           varchar(50) not null,
     email            varchar(50) not null,
@@ -10,9 +10,10 @@ Create table clientes(
 
 
 
-insert into clientes(nombre,email,numero) values ("Luis","luis@icloud.com",      "7758889999");
-insert into clientes(nombre,email,numero) values ("Gustabo","gustabo@icloud.com","7767777888");
-insert into clientes(nombre,email,numero) values ("Kevin","kevin@icloud.com",    "7759966655");
+insert into clientes(nombre,email,numero) values ("Luis","luis@icloud.com",      "7751258749");
+insert into clientes(nombre,email,numero) values ("Gustabo","gustabo@icloud.com","7752208945");
+insert into clientes(nombre,email,numero) values ("Kevin","kevin@icloud.com",    "77589114841");
+insert into clientes(nombre,email,numero) values ("reymon","pacheco@icloud.com", "7752052089");
 
 
 Select * From clientes;
