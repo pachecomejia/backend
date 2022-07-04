@@ -50,7 +50,9 @@ class Usuarios(BaseModel):
     level: int
 security = HTTPBasic()
 origins = [
-    "*",
+    "https://8000-pachecomejia-backend-0lv4cfaix24.ws-us47.gitpod.io",
+    "https://8080-pachecomejia-backend-0lv4cfaix24.ws-us47.gitpod.io",
+    
 ]
 
 app.add_middleware(
@@ -107,7 +109,7 @@ async def get_clientes():
         return response
     
 
-@app.post("/clkiente/", response_model=response)#url donde se puede buscar con el post /docs 
+@app.post("/cliente/", response_model=response)#url donde se puede buscar con el post /docs 
 async def cliente_add(nombre:str,email:str,numero:str, level: int = Depends(index)): #definicion de campos que pueden añadir 
     with sqlite3.connect("clientes.sqlite") as connection: #creacion  de donde se conectara y dopnde se ecuentra la base de datos creada 
         connection.row_factory = sqlite3.Row

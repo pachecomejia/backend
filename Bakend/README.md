@@ -4,6 +4,7 @@ pip install uvicorn
 uvicorn main:app --reload
 sqlite3 clientes.sqlite < clientes.sql
 git push -u origin main
+
  git push -u origin main
  rm -rf .git
  ###########################
