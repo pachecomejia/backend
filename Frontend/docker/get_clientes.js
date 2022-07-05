@@ -7,7 +7,7 @@ function get_clientes(){
     var request = new XMLHttpRequest();
     
 
-    request.open("GET","https://8000-pachecomejia-backend-0lv4cfaix24.ws-us47.gitpod.io/user/",true);
+    request.open("GET","https://8000-pachecomejia-backend-0lv4cfaix24.ws-us51.gitpod.io/user/",true);
     request.setRequestHeader("Accept","application/json");
     
     request.setRequestHeader("Authorization","Basic " +btoa("user" + ":" + "user"));

@@ -50,7 +50,7 @@ class Usuarios(BaseModel):
     level: int
 security = HTTPBasic()
 origins = [
-"https://8080-pachecomejia-backend-0lv4cfaix24.ws-us47.gitpod.io",    
+    "https://8080-pachecomejia-backend-0lv4cfaix24.ws-us51.gitpod.io",    
 ]
 
 app.add_middleware(
