@@ -1,8 +1,7 @@
 docker start c356d6312a01 -i
 # unidad2
-pip install fastapi
-pip install uvicorn
-uvicorn main:app --reload
+
+
 sqlite3 clientes.sqlite < clientes.sql
 git push -u origin main
  git push -u origin main

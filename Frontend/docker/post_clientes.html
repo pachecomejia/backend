@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+    <header>
+        <title>DOM JavaScript</title>
+        
+    </header>
+    <center><a href="get_clientes.html">
+        <button type="button" class="btn btn-outline-primary">TABLA</button>
+    </a></center>
+    <body>
+        <h1>Clientes en ID </h1>
+        <form id="form_clientes">
+            <label for="nombre">Nombre:</label>
+            <br>
+            <input type="text" id="nombre" name="nombre" />
+        
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" />
+            <br>
+            <label for="numero">Numero</label>
+            <br>
+            <input type="text" id="numero" name="numero" />
+            <br>
+            <input type="button" value="Guardar" onclick="post_Cliente()"/>
+        </form>
+        <script type="text/javascript" src="post_cliente.js"></script>
+     
+
+    </body>
+
+</html>
