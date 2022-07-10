@@ -30,13 +30,15 @@ function get_clientes(){
             var tr = document.createElement("tr");
             var tr_actualizar       = document.createElement("td");
             var tr_detalles_cliente = document.createElement("td");
+            var tr_borrar           = document.createElement("td");
             var tr_id_cliente       = document.createElement("td");
             var tr_nombre           = document.createElement("td");
             var tr_email            = document.createElement("td");
             var tr_numero           = document.createElement("td");
 
-            tr_detalles_cliente.innerHTML = "<a href='\get_cliente.html?"+json[row].id_cliente+"'>Detalles_cliente</a>";
-            tr_actualizar.innerHTML = "<a href='\put_clientes.html?"+json[row].id_cliente+"'>actualizar</a>";
+            tr_detalles_cliente.innerHTML        = "<a href='\get_cliente.html?"    +json[row].id_cliente+"'>Detalles_cliente</a>";
+            tr_actualizar.innerHTML              = "<a href='\put_clientes.html?"   +json[row].id_cliente+"'>actualizar</a>";
+            tr_borrar.innerHTML                  = "<a href='\delete_clientes.html?"+json[row].id_cliente+"'>Borrar</a>";
             tr_id_cliente.innerHTML     = json[row].id_cliente;
             tr_nombre.innerHTML         = json[row].nombre;
             tr_email.innerHTML          = json[row].email;
@@ -44,6 +46,7 @@ function get_clientes(){
            
             tr.appendChild(tr_detalles_cliente);
             tr.appendChild(tr_actualizar);
+            tr.appendChild(tr_borrar);
             tr.appendChild(tr_id_cliente);
             tr.appendChild(tr_nombre);
             tr.appendChild(tr_email);

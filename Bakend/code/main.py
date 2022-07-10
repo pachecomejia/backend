@@ -40,6 +40,9 @@ class Update(BaseModel):
     nombre: str
     email: str 
     numero: int
+class delete(BaseModel):
+    id_cliente: int
+    
 ##################################################################################
     
 
@@ -60,7 +63,7 @@ class Usuarios(BaseModel):
     level: int
 security = HTTPBasic()
 origins = [
-    "*",    
+    "https://8080-pachecomejia-backend-0lv4cfaix24.ws-us53.gitpod.io",    
 ]
 
 app.add_middleware(
@@ -95,7 +98,7 @@ def index(credentials: HTTPBasicCredentials = Depends(security)):
     return user[0]#return credentials.username
 
 @app.get("/", response_model=response)#url donde se puede buscar 
-async def index(username: str = Depends(index)):
+async def index(level: int() = Depends(index)):
     return {"message": "Fast API"}#mensaje de correcta ejecucion 
 #################################################################################################################
 #regresa a todos los usuarios agregados a la base de datos 
@@ -110,12 +113,18 @@ async def get_clientes(level: int = Depends(index)):
 
 ##########################################################################################
 @app.get("/cliente/{id_cliente}", response_model=Cliente)
-async def clientes_parametros(id_cliente: int):
+async def clientes_parametros(id_cliente: int,level: int = Depends(index)):
     with sqlite3.connect("clientes.sqlite") as connection:
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
         cursor.execute("Select * From clientes where id_cliente = {}".format(id_cliente))
         response = cursor.fetchone()
+        if response is None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="id_cliente no encontrado",
+                headers={"WWW-Authenticate": "Basic"},
+        )
         return response
 ###########################################################################################   
 
@@ -131,7 +140,7 @@ async def cliente_add(cliente_add: Post, level: int = Depends(index)): #definici
      
 
 @app.put("/clientes/", response_model=response)#url donde se puede buscar con el put /docs 
-async def cliente_put(cliente_put: Update,): #en esta parte define los campos que deberia lleavar para poder modificar 
+async def cliente_put(cliente_put: Update,level: int = Depends(index)): #en esta parte define los campos que deberia lleavar para poder modificar 
     with sqlite3.connect("clientes.sqlite") as connection:#creacion de la conectividad y la ruta donde se encunetra el archivo de ejecucion
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
@@ -140,12 +149,12 @@ async def cliente_put(cliente_put: Update,): #en esta parte define los campos qu
         return {"message":"usuario actualizado"}#mensaje de una correcta ejecucion 
         
 
-@app.delete("/clientes/{id_cliente}", response_model=response)#crea una url donde se puede buscar dicho campo asi como los apartados que debe de llevar 
-async def cliente_delete(id_cliente: int,level: int = Depends(index)):#muestra el campo adicional 
+@app.delete("/delete/{id_cliente}", response_model=response)#crea una url donde se puede buscar dicho campo asi como los apartados que debe de llevar 
+async def cliente_delete(cliente_delete: delete, level: int = Depends(index)):#muestra el campo adicional 
     with sqlite3.connect("clientes.sqlite") as connection:#conectividad con la carpeta en la que se debe alojar 
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
-        cursor.execute("delete from clientes where id_cliente = {}".format(id_cliente))#campos que se pueden eliminar 
-        response = cursor.fetchone()
+        cursor.execute("delete from clientes where id_cliente = {}".format(cliente_delete.id_cliente))#campos que se pueden eliminar 
+        connection.commit()        
         return {"message":"usuario borrado"}#mensaje de que la ejhecucion del delete se ejecuto de manera correcta 
          
