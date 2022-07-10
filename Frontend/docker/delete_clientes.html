@@ -7,6 +7,8 @@
     </header>
     
     <body>
+    
+    <body>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" id="wixDesktopViewport">        
@@ -17,9 +19,12 @@
           
             <label for="id_cliente">ID: </label>
             <br>
-            <input type="text" id="id_cliente" name="id_cliente" />
+            <input type="text"  class="form-control" id="id_cliente" name="id_cliente" />
            
-            <input type="button" value="borrar_cliente" onclick="deleteClientes()" />
+            <input type="button" class="btn btn-danger" value="borrar_cliente" onclick="deleteClientes()" />
+            <a href="get_clientes.html">
+                <button type="button" class="btn btn-outline-primary">cancelar</button>
+            </a>
     
                 
         </form>
@@ -27,5 +32,6 @@
         
 
     </body>
+    
 
 </html>

@@ -14,3 +14,11 @@ git push -u origin main
 # cd Frontend 
 # cd docker 
 # unidad2
+# como hacer un commit 
+-git add . agrega los cambios
+-git status se ve lo que se guardo en verde
+-git commit -m "CAMBIOS"
+-git push -u origin main 
+pip install fastapi
+pip install uvicorn
+uvicorn main:app --reload
