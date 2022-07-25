@@ -1,4 +1,4 @@
-function post_Cliente(){
+function add_use(){
 
     var nombre      = document.getElementById("nombre");
     var email       = document.getElementById("email");

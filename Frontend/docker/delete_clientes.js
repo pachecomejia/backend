@@ -13,7 +13,7 @@ function deleteClientes(){
     request.open("DELETE","https://8000-pachecomejia-backend-0lv4cfaix24.ws-us53.gitpod.io/delete/"+ id_cliente,true);
     request.setRequestHeader("Content-Type","application/json");
     request.setRequestHeader("Accept","application/json");
-    request.setRequestHeader("Authorization","Basic " +btoa("user" + ":" + "user"));
+    request.setRequestHeader("Authorization","Basic " + btoa("user" + ":" + "user"));
     
 
     request.onload = () =>{
